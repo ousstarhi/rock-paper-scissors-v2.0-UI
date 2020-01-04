@@ -1,0 +1,12 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  background:linear-gradient(90deg, #48c6ef 0%,#6f86d6 100% );
+}
+
+h1 {
+  text-align: center;
+}
+
