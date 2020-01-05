@@ -6,22 +6,44 @@ html, body {
   background:linear-gradient(90deg, #48c6ef 0%,#6f86d6 100% );
 }
 
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  column-gap: 80px;
+}
+
+#player, #computer {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: 1fr;
+}
+
 h1 {
   text-align: center;
 }
 
-#player-choices {
+#player-choices, #computer-choices {
   display: flex;
+}
+
+#rock, #paper, #scissors {
+  display: flex;
+  justify-content: center;
 }
 svg {
   fill: white;
 }
 
-.star-1-1 {
-  display: ;
-}
-
 img {
-  width: 80%;
+  width: 60%;
+}
+img:hover {
+  cursor: pointer;
 }
 
