@@ -10,3 +10,18 @@ h1 {
   text-align: center;
 }
 
+#player-choices {
+  display: flex;
+}
+svg {
+  fill: white;
+}
+
+.star-1-1 {
+  display: ;
+}
+
+img {
+  width: 80%;
+}
+
