@@ -31,19 +31,34 @@ h1 {
 #player-choices, #computer-choices {
   display: flex;
 }
+#computer-choices div {
+  opacity: 0.2;
+}
+#computer-choices div.active {
+  opacity: 1;
+}
 
-#rock, #paper, #scissors {
+#player-choices div, #computer-choices div {
   display: flex;
   justify-content: center;
 }
 svg {
-  fill: white;
+  fill: rgba(255, 255, 255, 0.356);
+}
+
+svg.active {
+  fill: rgb(255, 255, 255);
 }
 
 img {
   width: 60%;
 }
-img:hover {
+#player-choices img:hover {
   cursor: pointer;
 }
 
+#message {
+  width: 50%;
+  margin: auto;
+  font-size: 20px;
+}
