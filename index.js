@@ -12,10 +12,15 @@ function computerPlay() {
 }
 
 const playerChoices = document.querySelector('#player-choices');
-const computerChoices = document.querySelectorAll('#computer-choices div');
+const computerChoices = document.querySelectorAll('#computer-choices div img');
 const resultMessage = document.querySelector('#message');
 const computerScore = document.querySelectorAll('#computer-score .star');
 const playerScore = document.querySelectorAll('#player-score .star');
+const modalBtn = document.getElementById('modal-btn');
+const myModal = document.getElementById('myModal');
+function modalFunction() {
+  myModal.classList.add('display-block');
+}
 
 playerChoices.addEventListener('click', (e) => {
   function checkClass(star) {
@@ -51,6 +56,9 @@ playerChoices.addEventListener('click', (e) => {
     computerChoices.forEach((choice) => {
       if (computerChoice === choice.id) {
         choice.classList.add('active');
+        setTimeout(() => {
+          choice.classList.remove('active');
+        }, 2000);
       } else {
         choice.classList.remove('active');
       }
@@ -60,7 +68,7 @@ playerChoices.addEventListener('click', (e) => {
       firstScore.classList.add('active');
       const computerWin = Array.from(computerScore).some(checkAll);
       if (!computerWin) {
-        alert('Game over');
+        setTimeout(modalFunction, 2000);
       }
     }
     if ((e.target.id === 'rock' && computerChoice === scissors) || (e.target.id === 'paper' && computerChoice === rock) || (e.target.id === 'scissors' && computerChoice === paper)) {
@@ -68,23 +76,18 @@ playerChoices.addEventListener('click', (e) => {
       firstScore.classList.add('active');
       const playerWin = Array.from(playerScore).some(checkAll);
       if (!playerWin) {
-        alert('Game over');
+        setTimeout(modalFunction, 2000);
       }
     }
   }
 });
 
-const modalBtn = document.getElementById('modal-btn');
-const myModal = document.getElementById('myModal');
-function modalFunction(e) {
-  if (e.target.tagName === 'BUTTON') {
-    myModal.classList.add('display-block');
-  }
-}
-modalBtn.addEventListener('click', modalFunction);
+
+/* modalBtn.addEventListener('click', modalFunction);
 const replayBtn = document.getElementById('replay-btn');
 replayBtn.addEventListener('click', (e) => {
   if (e.target.tagName === 'A') {
     myModal.classList.remove('display-block');
   }
 });
+ */
