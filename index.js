@@ -82,3 +82,9 @@ function modalFunction(e) {
   }
 }
 modalBtn.addEventListener('click', modalFunction);
+const replayBtn = document.getElementById('replay-btn');
+replayBtn.addEventListener('click', (e) => {
+  if (e.target.tagName === 'A') {
+    myModal.classList.remove('display-block');
+  }
+});
