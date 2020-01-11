@@ -21,6 +21,9 @@ playerChoices.addEventListener('click', (e) => {
   function checkClass(star) {
     return !star.classList.contains('active');
   }
+  function checkAll(star) {
+    return !(star.classList.contains('active'));
+  }
   if (e.target.className === 'player-choice') {
     const computerChoice = computerPlay();
     if (resultMessage.childNodes[0]) {
@@ -55,11 +58,27 @@ playerChoices.addEventListener('click', (e) => {
     if ((e.target.id === 'rock' && computerChoice === paper) || (e.target.id === 'paper' && computerChoice === scissors) || (e.target.id === 'scissors' && computerChoice === rock)) {
       const firstScore = Array.from(computerScore).find(checkClass);
       firstScore.classList.add('active');
+      const computerWin = Array.from(computerScore).some(checkAll);
+      if (!computerWin) {
+        alert('Game over');
+      }
     }
     if ((e.target.id === 'rock' && computerChoice === scissors) || (e.target.id === 'paper' && computerChoice === rock) || (e.target.id === 'scissors' && computerChoice === paper)) {
       const firstScore = Array.from(playerScore).find(checkClass);
       firstScore.classList.add('active');
+      const playerWin = Array.from(playerScore).some(checkAll);
+      if (!playerWin) {
+        alert('Game over');
+      }
     }
   }
 });
-/* array.every() or array.sum() */
+
+const modalBtn = document.getElementById('modal-btn');
+const myModal = document.getElementById('myModal');
+function modalFunction(e) {
+  if (e.target.tagName === 'BUTTON') {
+    myModal.classList.add('display-block');
+  }
+}
+modalBtn.addEventListener('click', modalFunction);
