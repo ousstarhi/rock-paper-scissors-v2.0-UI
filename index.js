@@ -18,14 +18,38 @@ const computerScore = document.querySelectorAll('#computer-score .star');
 const playerScore = document.querySelectorAll('#player-score .star');
 const modalBtn = document.getElementById('modal-btn');
 const myModal = document.getElementById('myModal');
+function checkClass(star) {
+  return !star.classList.contains('active');
+}
+
 function modalFunction() {
+  const div = document.createElement('div');
+  const parag = document.createElement('p');
+  const scoreParag = document.createElement('p');
+  parag.textContent = 'You lost!';
+  const finalScore = Array.from(playerScore).findIndex(checkClass);
+  scoreParag.textContent = `${finalScore} : 5`;
+  div.appendChild(parag);
+  div.appendChild(scoreParag);
+  const modalContent = document.querySelector('.modal-content');
+  modalContent.insertBefore(div, modalContent.firstElementChild);
+  myModal.classList.add('display-block');
+}
+function playerModalFunction() {
+  const div = document.createElement('div');
+  const parag = document.createElement('p');
+  const scoreParag = document.createElement('p');
+  parag.textContent = 'You win!';
+  const finalScore = Array.from(computerScore).findIndex(checkClass);
+  scoreParag.textContent = `5 : ${finalScore}`;
+  div.appendChild(parag);
+  div.appendChild(scoreParag);
+  const modalContent = document.querySelector('.modal-content');
+  modalContent.insertBefore(div, modalContent.firstElementChild);
   myModal.classList.add('display-block');
 }
 
 playerChoices.addEventListener('click', (e) => {
-  function checkClass(star) {
-    return !star.classList.contains('active');
-  }
   function checkAll(star) {
     return !(star.classList.contains('active'));
   }
@@ -76,7 +100,7 @@ playerChoices.addEventListener('click', (e) => {
       firstScore.classList.add('active');
       const playerWin = Array.from(playerScore).some(checkAll);
       if (!playerWin) {
-        setTimeout(modalFunction, 2000);
+        setTimeout(playerModalFunction, 2000);
       }
     }
   }
