@@ -16,7 +16,7 @@ const computerChoices = document.querySelectorAll('#computer-choices div img');
 const resultMessage = document.querySelector('#message');
 const computerScore = document.querySelectorAll('#computer-score .star');
 const playerScore = document.querySelectorAll('#player-score .star');
-const modalBtn = document.getElementById('modal-btn');
+const replayBtn = document.getElementById('replay-btn');
 const myModal = document.getElementById('myModal');
 function checkClass(star) {
   return !star.classList.contains('active');
@@ -97,7 +97,7 @@ playerChoices.addEventListener('click', (e) => {
       firstScore.classList.add('active');
       const computerWin = Array.from(computerScore).some(checkAll);
       if (!computerWin) {
-        setTimeout(modalFunction, 1500);
+        setTimeout(modalFunction, 1000);
       }
     }
     if ((e.target.id === 'rock' && computerChoice === scissors) || (e.target.id === 'paper' && computerChoice === rock) || (e.target.id === 'scissors' && computerChoice === paper)) {
@@ -105,9 +105,24 @@ playerChoices.addEventListener('click', (e) => {
       firstScore.classList.add('active');
       const playerWin = Array.from(playerScore).some(checkAll);
       if (!playerWin) {
-        setTimeout(playerModalFunction, 1500);
+        setTimeout(playerModalFunction, 1000);
       }
     }
+  }
+});
+
+replayBtn.addEventListener('click', (e) => {
+  if (e.target.tagName === 'BUTTON') {
+    myModal.classList.remove('display-block');
+    count = 0;
+    roundHead.innerHTML = `ROUND: ${count}`;
+    const allScores = document.querySelectorAll('.star');
+    allScores.forEach((star) => {
+      star.classList.remove('active');
+    });
+    const modalContent = document.querySelector('.modal-content');
+    modalContent.removeChild(modalContent.firstElementChild);
+    resultMessage.removeChild(resultMessage.firstElementChild);
   }
 });
 
