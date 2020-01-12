@@ -39,7 +39,7 @@ function playerModalFunction() {
   const div = document.createElement('div');
   const parag = document.createElement('p');
   const scoreParag = document.createElement('p');
-  parag.textContent = 'You win!';
+  parag.textContent = 'You won!';
   const finalScore = Array.from(computerScore).findIndex(checkClass);
   scoreParag.textContent = `5 : ${finalScore}`;
   div.appendChild(parag);
