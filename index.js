@@ -92,7 +92,9 @@ playerChoices.addEventListener('click', (e) => {
         choice.classList.remove('active');
       }
     });
-    if ((e.target.id === 'rock' && computerChoice === paper) || (e.target.id === 'paper' && computerChoice === scissors) || (e.target.id === 'scissors' && computerChoice === rock)) {
+    if ((e.target.id === 'rock' && computerChoice === paper)
+        || (e.target.id === 'paper' && computerChoice === scissors)
+        || (e.target.id === 'scissors' && computerChoice === rock)) {
       const firstScore = Array.from(computerScore).find(checkClass);
       firstScore.classList.add('active');
       const computerWin = Array.from(computerScore).some(checkAll);
@@ -100,7 +102,9 @@ playerChoices.addEventListener('click', (e) => {
         setTimeout(modalFunction, 1000);
       }
     }
-    if ((e.target.id === 'rock' && computerChoice === scissors) || (e.target.id === 'paper' && computerChoice === rock) || (e.target.id === 'scissors' && computerChoice === paper)) {
+    if ((e.target.id === 'rock' && computerChoice === scissors)
+        || (e.target.id === 'paper' && computerChoice === rock)
+        || (e.target.id === 'scissors' && computerChoice === paper)) {
       const firstScore = Array.from(playerScore).find(checkClass);
       firstScore.classList.add('active');
       const playerWin = Array.from(playerScore).some(checkAll);
@@ -125,13 +129,3 @@ replayBtn.addEventListener('click', (e) => {
     resultMessage.removeChild(resultMessage.firstElementChild);
   }
 });
-
-
-/* modalBtn.addEventListener('click', modalFunction);
-const replayBtn = document.getElementById('replay-btn');
-replayBtn.addEventListener('click', (e) => {
-  if (e.target.tagName === 'A') {
-    myModal.classList.remove('display-block');
-  }
-});
- */
